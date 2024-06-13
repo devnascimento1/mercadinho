@@ -32,6 +32,12 @@ class _AddProdutoScreenState extends State<AddProdutoScreen> {
     }
   }
 
+  double _parsePreco(String preco) {
+    // Remove currency symbol and replace commas with dots
+    preco = preco.replaceAll(RegExp(r'[^\d,\.]'), '').replaceAll(',', '.');
+    return double.tryParse(preco) ?? 0.0;
+  }
+
   Future<void> _saveProduto() async {
     if (_formKey.currentState!.validate() && _image != null) {
       final produtos =
@@ -41,11 +47,15 @@ class _AddProdutoScreenState extends State<AddProdutoScreen> {
               1 +
               widget.categoriaId
           : 1;
+      
+      // Parse price string to double
+      final precoDouble = _parsePreco(_precoController.text);
+
       final novoProduto = Produto(
         id: novoId,
         nome: _nomeController.text,
         descricao: _descricaoController.text,
-        preco: double.parse(_precoController.text),
+        preco: precoDouble,
         imagem: _image!.path,
         categoriaId: widget.categoriaId,
       );

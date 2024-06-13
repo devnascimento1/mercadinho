@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mercado/splash_screen.dart';
 import 'package:mercado/addCategoriaScreen.dart';
 import 'package:mercado/categoriaScreen.dart';
 import 'package:mercado/modelCategoria.dart';
@@ -7,19 +8,35 @@ import 'package:mercado/opcoesScreen.dart';
 import 'package:mercado/sharedPreferencesHelper.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const SplashScreenApp());
 }
 
-class MyApp extends StatelessWidget {
+class SplashScreenApp extends StatelessWidget {
+  const SplashScreenApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Lista de Compras',
+      title: 'Mercado',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainScreen(),
+      home: const SplashScreen(), // Define a SplashScreen como a tela inicial
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Mercado',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: CategoriaScreen(), // Tela principal do aplicativo
     );
   }
 }
