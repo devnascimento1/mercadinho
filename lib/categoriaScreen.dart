@@ -6,6 +6,8 @@ import 'package:mercado/produtoScreen.dart';
 import 'package:mercado/sharedPreferencesHelper.dart';
 
 class CategoriaScreen extends StatefulWidget {
+  const CategoriaScreen({super.key});
+
   @override
   _CategoriaScreenState createState() => _CategoriaScreenState();
 }

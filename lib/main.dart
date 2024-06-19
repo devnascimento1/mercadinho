@@ -22,7 +22,7 @@ class SplashScreenApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const SplashScreen(), // Define a SplashScreen como a tela inicial
-      debugShowCheckedModeBanner: false, // Remove o banner de debug
+      debugShowCheckedModeBanner:   false, // Remove o banner de debug
     );
   }
 }
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CategoriaScreen(), // Tela principal do aplicativo
+      home: MainScreen(), // Tela principal do aplicativo
       debugShowCheckedModeBanner: false, // Remove o banner de debug
     );
   }
