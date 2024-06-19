@@ -38,13 +38,14 @@ class _CategoriaScreenState extends State<CategoriaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 227, 227, 227),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 227, 227, 227),
-        title: Text('Todos os produtos'),
-        centerTitle: true,
-      ),
-      body: ListView.builder(
+  resizeToAvoidBottomInset: false, // Adicione essa linha
+  backgroundColor: Color.fromARGB(255, 227, 227, 227),
+  appBar: AppBar(
+    backgroundColor: Color.fromARGB(255, 227, 227, 227),
+    title: Text('Todos os produtos'),
+    centerTitle: true,
+  ),
+  body: ListView.builder(
         itemCount:
             (_categorias.length / 2).ceil(), // Calcula o número de linhas
         itemBuilder: (context, index) {

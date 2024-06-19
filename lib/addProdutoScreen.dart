@@ -20,14 +20,31 @@ class _AddProdutoScreenState extends State<AddProdutoScreen> {
   final _descricaoController = TextEditingController();
   final _precoController = TextEditingController();
   File? _image;
+  bool _isImagePickerActive = false; // Add this state variable
   final SharedPreferencesHelper _prefsHelper = SharedPreferencesHelper();
 
   Future<void> _pickImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
+    if (_isImagePickerActive) {
+      return;
+    }
+
+    setState(() {
+      _isImagePickerActive = true;
+    });
+
+    try {
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        setState(() {
+          _image = File(pickedFile.path);
+        });
+      }
+    } catch (e) {
+      // Handle the error here
+    } finally {
       setState(() {
-        _image = File(pickedFile.path);
+        _isImagePickerActive = false;
       });
     }
   }
